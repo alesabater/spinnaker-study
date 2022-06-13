@@ -2,26 +2,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
     labels:
-        app: casual-code-microservice
+        app: causal-code-microservice
         stack: frontend
         source: demo
-    name: casual-code-microservice
+    name: causal-code-microservice
     namespace: microservices
 spec:
     replicas: 5
     selector:
         matchLabels:
-            run: casual-code-microservice
+            run: causal-code-microservice
     template:
         metadata:
             labels:
-                app: casual-code-microservice
-                run: casual-code-microservice
+                app: causal-code-microservice
+                run: causal-code-microservice
                 source: demo
         spec:
             containers:
-                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/casual-code-microservice
-                    name: casual-code-microservice
+                -   image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/causal-code-microservice
+                    name: causal-code-microservice
                     ports:
                         -   name: web
                             containerPort: 8080
@@ -31,14 +31,14 @@ kind: Service
 apiVersion: v1
 metadata:
     labels:
-        app: casual-code-microservice-service
+        app: causal-code-microservice-service
         stack: frontend
-    name: casual-code-microservice-service
+    name: causal-code-microservice-service
     namespace: microservices
 spec:
     selector:
         source: demo
-        app: casual-code-microservice
+        app: causal-code-microservice
     ports:
         -   name: web
             protocol: TCP
@@ -54,15 +54,15 @@ metadata:
         stack: frontend
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
-    name: casual-code-ingress
+    name: causal-code-ingress
     namespace: microservices
 spec:
     rules:
         -   http:
                 paths:
-                    -   path: /casual-code(/|$)(.*)
+                    -   path: /causal-code(/|$)(.*)
                         backend:
-                            serviceName: casual-code-microservice-service
+                            serviceName: causal-code-microservice-service
                             servicePort: 30201
 
 
