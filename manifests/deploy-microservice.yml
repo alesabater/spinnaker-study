@@ -5,7 +5,7 @@ metadata:
         app: causal-code-microservice
         stack: frontend
         source: demo
-        foo: bar2
+        foo: bar3
     name: causal-code-microservice
     namespace: microservices
 spec:
